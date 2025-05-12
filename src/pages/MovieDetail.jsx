@@ -9,10 +9,16 @@ function MovieDetail() {
     useEffect(() => {
         if (id) {
             axios.get(`http://127.0.0.1:3000/movies/${id}`)
-                .then(response => setMovie(response.data))
-                .catch(error => console.error("Errore nella chiamata API:", error));
+                .then(response => {
+                    console.log(response.data);
+                    setMovie(response.data.movie);
+                })
+                .catch(error => {
+                    console.error("Errore nella chiamata API:", error);
+                });
         }
     }, [id]);
+
 
     if (!movie) {
         return <div>Caricamento delle card</div>;
