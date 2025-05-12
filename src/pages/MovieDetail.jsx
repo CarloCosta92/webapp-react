@@ -25,12 +25,20 @@ function MovieDetail() {
     }
 
     return (
-        <div>
-            <h2>{movie.title}</h2>
-            <img src={movie.image} alt={movie.title} />
-            <p><strong>Descrizione:</strong> {movie.abstract}</p>
-            <p><strong>Regista:</strong> {movie.director}</p>
-            <p><strong>Data di uscita:</strong> {movie.release_year}</p>
+        <div className='row gy-3 '>
+            <div className='card col-12 col-md-4 '>
+                <img src={movie.image} alt={movie.title} className='w-50 mx-auto my-auto p-2' />
+                <div className='p-3'>
+                    <div className='card-title'>
+                        <h2 className='mb-3 text-center'>{movie.title}</h2>
+                    </div>
+                    <div className='card-body'>
+                        <p><strong>Descrizione:</strong> {movie.abstract}</p>
+                        <p><strong>Regista:</strong> {movie.director}</p>
+                        <p><strong>Data di uscita:</strong> {movie.release_year}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
