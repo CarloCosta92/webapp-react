@@ -8,7 +8,6 @@ function Home() {
     useEffect(() => {
         axios.get('http://127.0.0.1:3000/movies')
             .then(response => setMovies(response.data))
-
             .catch(error => console.error('Errore caricamento film:', error));
     }, []);
 

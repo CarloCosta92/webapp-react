@@ -24,3 +24,28 @@ Impostare la struttura del lavoro in maniera da sfruttare la riutailizzabilità 
 Aggiungere, nella pagina dei film, un campo per cercare su tutti i campi utili del db (es. titolo, abstract)
 
 Curare l’aspetto estetico della vostra applicazione
+
+
+## MILESTONE 1
+
+Colleghiamo la lista dei movies a una pagina di dettaglio movie.
+
+Effettuiamo una chiamata AJAX dalla pagina di dettaglio per ottenere il dettaglio di un singolo film, comprese le sue recensioni
+
+## MILESTONE 2
+
+Rappresentiamo le informazioni del movie
+
+## MILESTONE 3
+
+Creiamo un componente ReviewCard per rappresentare le informazioni delle recensioni
+
+## BONUS
+
+Rappresentiamo tutti i voti delle recensioni con un componente StarRating
+
+## BONUS BONUS
+
+Sul backend, iniziamo a realizzare una rotta /movies/:id/reviews per aggiungere una nuova recensione.
+
+Può restituire un semplice testo "Rotta per aggiungere una recensione";
