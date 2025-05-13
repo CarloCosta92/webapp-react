@@ -27,22 +27,22 @@ function MovieCard() {
         return <div>Caricamento delle card</div>;
     }
     return (
-        <div className='row justify-content-center '>
-            <div className='card col-6 col-md-4 '>
+        <div className='row justify-content-center  '>
+            <div className='card col-6 col-md-4 me-3 bg-warning '>
                 <img src={movie.image} alt={movie.title} className='w-50 mx-auto my-auto p-2' />
                 <div className='p-3'>
                     <div className='card-title'>
                         <h2 className='mb-3 text-center'>{movie.title}</h2>
                     </div>
                     <div className='card-body'>
-                        <p><strong>Descrizione:</strong> {movie.abstract}</p>
-                        <p><strong>Regista:</strong> {movie.director}</p>
-                        <p><strong>Data di uscita:</strong> {movie.release_year}</p>
+                        <p><strong>Description:</strong> {movie.abstract}</p>
+                        <p><strong>Director:</strong> {movie.director}</p>
+                        <p><strong>Release year:</strong> {movie.release_year}</p>
                     </div>
 
                 </div>
             </div>
-            <div className='card col-6 col-md-4 '>
+            <div className='card col-6 col-md-4 bg-warning'>
                 <ReviewCard reviews={reviews} />
             </div>
         </div>

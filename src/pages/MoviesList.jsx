@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-function Home() {
+function MoviesList() {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
@@ -12,19 +12,19 @@ function Home() {
     }, []);
 
     return (
-        <div>
-            <h2 className='mb-3'>Lista Film</h2>
+        <div className='m-3'>
+            <h2 className='mb-3'>Movies List</h2>
             <div>
-                <div className='row gy-3' >
+                <div className='row gy-3 ' >
                     {movies.map(movie => (
-                        <div className='col-12 col-md-4 ' key={movie.id} >
-                            <Link to={`/movie/${movie.id}`} >
-                                <div className='card'>
+                        <div className='col-12 col-md-4  ' key={movie.id} >
+                            <Link to={`/movies/${movie.id}`} className='text-decoration-none' >
+                                <div className='card bg-warning'>
 
                                     <img src={movie.image} alt={movie.title} className='w-50 mx-auto p-3' />
 
-                                    <div className='card-body'>
-                                        <strong className='text-danger'>{movie.title}</strong>
+                                    <div className='card-body text-center'>
+                                        <strong className='text-danger '>{movie.title}</strong>
                                     </div>
                                 </div>
                             </Link>
@@ -36,4 +36,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default MoviesList;
