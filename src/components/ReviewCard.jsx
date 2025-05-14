@@ -1,3 +1,5 @@
+import Ratings from "./Ratings";
+
 const ReviewCard = ({ reviews }) => {
 
     return <div className="movie-reviews d-flex align-self-center my-auto ">
@@ -6,10 +8,11 @@ const ReviewCard = ({ reviews }) => {
             {reviews.map(review => {
                 return <div key={review.id} className="review">
                     <h4>{review.name}</h4>
+                    <Ratings vote={review.vote} />
                     <p>{review.text}</p>
-                    <p>Vote : {review.vote} / 5</p>
                 </div>
             })}
+
         </div>
     </div>
 }
