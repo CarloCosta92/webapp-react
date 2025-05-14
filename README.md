@@ -1,5 +1,7 @@
 # Setup Web App React
 
+# GIORNO 1
+
 ## MILESTONE 1
 Mettiamo su un nuovo progetto React aiutandoci con Vite
 
@@ -25,6 +27,7 @@ Aggiungere, nella pagina dei film, un campo per cercare su tutti i campi utili d
 
 Curare l’aspetto estetico della vostra applicazione
 
+# GIORNO 2
 
 ## MILESTONE 1
 
@@ -49,3 +52,24 @@ Rappresentiamo tutti i voti delle recensioni con un componente StarRating
 Sul backend, iniziamo a realizzare una rotta /movies/:id/reviews per aggiungere una nuova recensione.
 
 Può restituire un semplice testo "Rotta per aggiungere una recensione";
+
+# GIORNO 3
+
+
+## MILESTONE 1 (BACKEND)
+
+Predisponiamo un’API per salvare nel database una nuova recensione legata ad un film
+
+Testiamola su postman e verifichiamo che nel DB venga effettivamente inserita una nuova recensione
+
+## MILESTONE 2 (FRONTEND)
+
+Creiamo un componente che contenga il form per le recensioni
+
+Inseriamo questo componente nella pagina di dettaglio del film
+
+All’invio del form, la nuova recensione viene salvata sul database e visualizzata nella pagina, in fondo alle altre
+
+## BONUS:
+
+Provate a creare un nuovo film con upload immagine (multer)!
