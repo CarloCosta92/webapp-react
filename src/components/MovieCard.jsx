@@ -1,16 +1,13 @@
-
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ReviewCard from './ReviewCard';
+import ReviewForm from './ReviewForm'; // Importa il nuovo componente
 
 function MovieCard() {
     const { id } = useParams();
     const [movie, setMovie] = useState();
     const [reviews, setReviews] = useState([]);
-    const [name, setName] = useState('');
-    const [text, setText] = useState('');
-    const [vote, setVote] = useState('');
 
     useEffect(() => {
         if (id) {
@@ -30,30 +27,15 @@ function MovieCard() {
             });
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
-        const newReview = {
-            name: name,
-            text: text,
-            vote: vote,
-            movie_id: id
-        };
-
-        console.log(newReview)
-
+    const handleReviewSubmit = (newReview) => {
+        console.log(newReview);
         axios.post(`http://127.0.0.1:3000/movies/${id}/reviews`, newReview)
             .then(response => {
                 console.log("Recensione inviata con successo:", response);
-
                 movieData();
-                setName('');
-                setText('');
-                setVote('');
             })
             .catch(error => {
                 console.error("Errore nell'invio della recensione:", error);
-
             });
     };
 
@@ -80,49 +62,7 @@ function MovieCard() {
                 <ReviewCard reviews={reviews} />
             </div>
 
-            <div className='card col col-md-4 p-3 bg-warning'>
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                        <label htmlFor="name" className="form-label">Inserisci il tuo nome</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            required
-                        />
-                    </div>
-
-                    <div className="mb-3">
-                        <label htmlFor="text" className="form-label">Inserisci la tua recensione</label>
-                        <textarea
-                            className="form-control"
-                            id="text"
-                            value={text}
-                            onChange={(e) => setText(e.target.value)}
-                            rows="3"
-                            required
-                        />
-                    </div>
-
-                    <div className="mb-3">
-                        <label htmlFor="vote" className="form-label">Inserisci il tuo voto</label>
-                        <input
-                            type="number"
-                            className="form-control"
-                            id="vote"
-                            value={vote}
-                            onChange={(e) => setVote(e.target.value)}
-                            min="1"
-                            max="5"
-                            required
-                        />
-                    </div>
-
-                    <button type="submit" className="btn btn-primary">Submit</button>
-                </form>
-            </div>
+            <ReviewForm movieId={id} onReviewSubmit={handleReviewSubmit} /> {/* Usa il nuovo componente */}
         </div>
     );
 }
