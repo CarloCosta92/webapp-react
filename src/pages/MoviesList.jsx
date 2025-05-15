@@ -1,14 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import LoaderContext from '../contexts/LoaderContext';
 
 function MoviesList() {
     const [movies, setMovies] = useState([]);
+    const { setLoading } = useContext(LoaderContext);
+
 
     useEffect(() => {
+        setLoading(true);
+
         axios.get('http://127.0.0.1:3000/movies')
-            .then(response => setMovies(response.data))
-            .catch(error => console.error('Errore caricamento film:', error));
+            .then(response => {
+                setMovies(response.data);
+
+            })
+            .catch(error => {
+                console.error('Errore caricamento film:', error);
+
+            })
+
+            .finally(() => setLoading(false))
     }, []);
 
     return (

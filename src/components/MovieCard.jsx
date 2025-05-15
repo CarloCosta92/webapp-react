@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ReviewCard from './ReviewCard';
-import ReviewForm from './ReviewForm'; // Importa il nuovo componente
+import ReviewForm from './ReviewForm';
+import LoaderContext from '../contexts/LoaderContext';
 
 function MovieCard() {
     const { id } = useParams();
     const [movie, setMovie] = useState();
     const [reviews, setReviews] = useState([]);
+    const { setLoading } = useContext(LoaderContext);
 
     useEffect(() => {
         if (id) {
@@ -16,6 +18,8 @@ function MovieCard() {
     }, [id]);
 
     const movieData = () => {
+
+        setLoading(true)
         axios.get(`http://127.0.0.1:3000/movies/${id}`)
             .then(response => {
                 console.log(response.data);
@@ -24,10 +28,13 @@ function MovieCard() {
             })
             .catch(error => {
                 console.error("Errore nella chiamata API:", error);
-            });
+            })
+
+            .finally(() => setLoading(false));
     };
 
     const handleReviewSubmit = (newReview) => {
+        setLoading(true)
         console.log(newReview);
         axios.post(`http://127.0.0.1:3000/movies/${id}/reviews`, newReview)
             .then(response => {
@@ -36,7 +43,8 @@ function MovieCard() {
             })
             .catch(error => {
                 console.error("Errore nell'invio della recensione:", error);
-            });
+            })
+            .finally(() => setLoading(false));
     };
 
     if (!movie) {

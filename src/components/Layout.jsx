@@ -1,8 +1,14 @@
-import { Outlet, Link, NavLink } from 'react-router-dom';
+import { Outlet, NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import LoaderContext from "../contexts/LoaderContext"
+import Loader from './Loader';
 
 function Layout() {
+    const { loading } = useContext(LoaderContext);
+    console.log(loading)
     return (
         <>
+
             <header>
                 <h1 className='text-center text-danger mb-3 p-3'>WEB APP REACT</h1>
                 <ul className='d-flex list-unstyled justify-content-center'>
@@ -18,6 +24,7 @@ function Layout() {
 
             <main>
                 <Outlet />
+                {loading && <Loader />}
             </main>
         </>
     );
